@@ -22,7 +22,7 @@ public interface CustomerService {
 	
 	public List<IPackage> getAllPackagesByCustomer(Integer customerId)throws CustomerNotFoundException;
 	
-
+	public Customer deleteCustomer(Integer customerId) throws CustomerNotFoundException;
 		
 	
 	

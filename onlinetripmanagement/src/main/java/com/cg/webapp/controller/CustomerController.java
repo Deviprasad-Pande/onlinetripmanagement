@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.webapp.beans.Customer;
 import com.cg.webapp.beans.LoginBean;
+import com.cg.webapp.beans.Merchant;
 import com.cg.webapp.beans.IPackage;
 import com.cg.webapp.exception.CustomerNotFoundException;
 import com.cg.webapp.exception.MerchantNotFoundException;
@@ -77,6 +79,11 @@ public class CustomerController {
 	 		return cService.getAllPackagesByCustomer(customerId);
 		}
 	
+		@DeleteMapping("/deleteCustomerById/{customerId}")
+		public ResponseEntity<Customer> deleteCustomer(@PathVariable Integer customerId){
+			return new ResponseEntity<Customer>(cService.deleteCustomer(customerId), HttpStatus.OK);
+			
+		}
 		
 		@PostMapping("/bookPackage/{customerId}/{packageId}")
 		public String bookPackage(@PathVariable Integer customerId, @PathVariable Integer packageId ) {

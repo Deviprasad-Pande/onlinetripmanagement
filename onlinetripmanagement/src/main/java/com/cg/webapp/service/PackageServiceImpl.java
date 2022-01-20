@@ -89,8 +89,26 @@ public class PackageServiceImpl implements PackageService {
 		return pRepo.save(tripPackage);
 	}
 
-	
-	
+	@Override
+	public IPackage deletePackage(Integer packageId)throws PackageNotFoundException{
+		
+		Optional<IPackage> opt=pRepo.findById(packageId);
+		
+		
+		if(opt.isPresent()) {
+			
+			IPackage tripPackage= opt.get();
+			pRepo.deleteById(packageId);
+			log.info("Merchant record deleted");
+			return tripPackage;
+			
+			
+		}else
+			throw  new MerchantNotFoundException("invalid Merchant Id...");
+		
+		
+		
+	}
 	
 	
 }

@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 
 import com.cg.webapp.beans.Customer;
 import com.cg.webapp.beans.IPackage;
+import com.cg.webapp.beans.Merchant;
 import com.cg.webapp.exception.CustomerNotFoundException;
+import com.cg.webapp.exception.MerchantNotFoundException;
 import com.cg.webapp.exception.PackageNotAvailableException;
 import com.cg.webapp.repositories.CustomerRepository;
 
@@ -71,17 +73,36 @@ public class CustomerServiceImpl implements CustomerService {
 		Optional<Customer> opt= cRepo.findById(customerId);
 		if (opt.isPresent()) {
 		Customer customer=opt.get();
+		log.info("All packages..");
 		return customer.getPackages();
 		
 		}
-		else {
-			throw new CustomerNotFoundException("Customer not found");
-		}
+		else 
 		
+			throw new CustomerNotFoundException("invalid customer id..");
+	
 	}
+	
+	@Override
+	public Customer deleteCustomer(Integer customerId) throws CustomerNotFoundException {
+		
+		Optional<Customer> opt=cRepo.findById(customerId);
+		
+		
+		if(opt.isPresent()) {
+			
+			Customer customer= opt.get();
+			cRepo.delete(customer);
+			log.info("Customer record deleted");
+			return customer;
+			
+			
+		}else
+			throw  new CustomerNotFoundException("invalid Customer Id...");
+		
 
 	  
 	
-
+	}
 	
 }

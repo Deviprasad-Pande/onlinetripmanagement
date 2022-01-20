@@ -12,7 +12,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer>{
 
 	public Customer findByEmailAndPassword(String email,String password);
 
-	//public List<IPackage> findAllById(Integer customerId);
+
 
 	
 }
