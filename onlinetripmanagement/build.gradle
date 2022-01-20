@@ -13,7 +13,7 @@ configurations {
 		extendsFrom annotationProcessor
 	}
 }
-
+ 
 repositories {
 	mavenCentral()
 }
@@ -26,9 +26,19 @@ dependencies {
 	runtimeOnly 'org.postgresql:postgresql'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '2.5.8'
+
+  
+
+
+
+	implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.30'
+    implementation group: 'io.springfox', name: 'springfox-boot-starter', version: '3.0.0'
+	
+
 }
 
 test {
-
 	useJUnitPlatform()
 }
