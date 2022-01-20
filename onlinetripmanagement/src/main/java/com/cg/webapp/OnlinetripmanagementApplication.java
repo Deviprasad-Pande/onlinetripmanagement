@@ -14,7 +14,7 @@ public class OnlinetripmanagementApplication {
 	public static void main(String[] args) {
 
 	  
-		
+		//demo
 		log.info("Online Trip Management Application Started");
 
 		SpringApplication.run(OnlinetripmanagementApplication.class, args);
