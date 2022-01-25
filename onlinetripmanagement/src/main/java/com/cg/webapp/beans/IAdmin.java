@@ -19,11 +19,11 @@ public class IAdmin {
 	
 	private Integer adminId;
 	
-	private String name="John";
+	private String name;
 
-	private String username="Admin@gmail.com";
+	private String username;
 	
-	private String password="Root";
+	private String password;
 	
 	
 	
