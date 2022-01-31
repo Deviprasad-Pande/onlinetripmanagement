@@ -1,9 +1,12 @@
 package com.cg.webapp.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.catalina.authenticator.SavedRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.data.ldap.LdapRepositoriesAutoConfiguration;
 import org.springframework.stereotype.Service;
 
 import com.cg.webapp.beans.Customer;
@@ -13,6 +16,7 @@ import com.cg.webapp.exception.CustomerNotFoundException;
 import com.cg.webapp.exception.MerchantNotFoundException;
 import com.cg.webapp.exception.PackageNotAvailableException;
 import com.cg.webapp.repositories.CustomerRepository;
+import com.cg.webapp.repositories.PackageRepository;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -26,6 +30,8 @@ public class CustomerServiceImpl implements CustomerService {
 	@Autowired
 	private CustomerRepository cRepo;
 	
+	@Autowired
+	private PackageRepository pRepo;
 	@Override
 	public Customer registerNewCustomer(Customer customer) {
 		log.info("Registered New Customer");
@@ -104,5 +110,26 @@ public class CustomerServiceImpl implements CustomerService {
 	  
 	
 	}
-	
+	@Override
+	public String bookPackage(IPackage ipackage,Customer customer)throws Exception{
+		
+		if(ipackage.getAvailability()>0 && customer != null) {
+			ipackage.setAvailability(ipackage.getAvailability()-1);
+			List<IPackage>packagelist = new ArrayList<>();
+			packagelist.add(ipackage);
+			
+			List<Customer>customers = new ArrayList<>();
+			customers.add(customer);
+			
+			cRepo.save(customer);
+			IPackage resPackage = pRepo.save(ipackage);
+			
+			return "Package available to book = " + resPackage.getAvailability().toString();
+		}
+		   
+		 return "No package available to book";
+			
+		}
+		
 }
+	

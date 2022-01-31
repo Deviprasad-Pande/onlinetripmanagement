@@ -24,7 +24,9 @@ public interface CustomerService {
 	
 	public Customer deleteCustomer(Integer customerId) throws CustomerNotFoundException;
 		
-	
+	public String bookPackage (IPackage ipackage,Customer customer) throws Exception;
+
+
 	
 	
 

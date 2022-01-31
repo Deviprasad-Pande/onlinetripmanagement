@@ -86,39 +86,15 @@ public class CustomerController {
 		}
 		
 		@PostMapping("/bookPackage/{customerId}/{packageId}")
-		public String bookPackage(@PathVariable Integer customerId, @PathVariable Integer packageId ) {
+		public String bookPackage(@PathVariable Integer customerId, @PathVariable Integer packageId ) throws Exception {
 			
 			IPackage ipackage   = pService.getPackageDetailsById(packageId);
 			Customer customer = cService.getCustomerDetailsById(customerId);
 			
-			if(ipackage.getAvailability()> 0 && customer != null){
-				
-				ipackage.setAvailability(ipackage.getAvailability()-1);
-				
-				List<IPackage> packagelist = new ArrayList<>();		
-				packagelist.add(ipackage);
-				
-				List<Customer> customers = new ArrayList<>();	
-				customers.add(customer);
-				
-				ipackage.setCustomer(customers);
-				customer.setPackages(packagelist);
-				
-		        cService.updateCustomer(customer);
-		        IPackage resPackage =  pService.updatePackage(ipackage);
-		       
-		     
-		        return "Packages available to book = " + resPackage.getAvailability().toString();
-			}
-			
-			 return "Sorry No Packages Available To Book";
-		}
+			return cService.bookPackage(ipackage, customer);
 	
 	
 	
 	
-	
-	
-	
-	
+		}	
 }
