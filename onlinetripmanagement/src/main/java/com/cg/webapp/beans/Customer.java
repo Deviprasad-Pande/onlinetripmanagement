@@ -37,7 +37,7 @@ public class Customer {
 	private String email;
 	
 	@Size(min=8,max=8 ,message = "Password length should be 8")
-	//@Pattern(regexp = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$",message = "Enter a valid password")
+	@Pattern(regexp = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$",message = "Enter a valid password")
 	@NotNull(message="Entering Password is Mandatory")
 	private String password;
 	
@@ -45,7 +45,7 @@ public class Customer {
 	private String adddress;
 	
 	@Size(min=10,max=10,message = "Mobile no should be 10 digit")
-	//@Pattern(regexp = "[789][0-9]{9}",message = "Enter valid mobile number")
+	@Pattern(regexp = "[789][0-9]{9}",message = "Enter valid mobile number")
 	@NotNull(message="Mobile Number is Mandatory")
 	private String mobileNo;
 	
