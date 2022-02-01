@@ -37,7 +37,7 @@ public class Customer {
 	private String email;
 	
 	@Size(min=8,max=8 ,message = "Password length should be 8")
-	@Pattern(regexp = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$",message = "Enter a valid password")
+	//@Pattern(regexp = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$",message = "Enter a valid password")
 	@NotNull(message="Entering Password is Mandatory")
 	private String password;
 	
