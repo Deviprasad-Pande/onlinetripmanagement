@@ -45,7 +45,7 @@ public class Customer {
 	private String adddress;
 	
 	@Size(min=10,max=10,message = "Mobile no should be 10 digit")
-	@Pattern(regexp = "[789][0-9]{9}",message = "Enter valid mobile phone number")
+	//@Pattern(regexp = "[789][0-9]{9}",message = "Enter valid mobile number")
 	@NotNull(message="Mobile Number is Mandatory")
 	private String mobileNo;
 	
