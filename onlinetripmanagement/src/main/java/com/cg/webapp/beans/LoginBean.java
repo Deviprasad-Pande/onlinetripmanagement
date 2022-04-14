@@ -18,7 +18,7 @@ public class LoginBean {
 	
 	@Size(min=5,max=8)
 	@NotNull(message="Entering Password is Mandatory")
-	@Pattern(regexp = "[789][0-9]{9}",message = "Enter valid password")
+//	@Pattern(regexp = "[789][0-9]{9}",message = "Enter valid password")
 	private String password;
 	private String role;
 

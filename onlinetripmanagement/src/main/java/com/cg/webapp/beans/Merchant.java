@@ -42,7 +42,7 @@ public class Merchant {
 	private String email;
 	
 	@Size(min=8,max=8,message = "Password length should be 8")
-	@Pattern(regexp = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$",message = "Enter a valid password")
+//	@Pattern(regexp = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$",message = "Enter a valid password")
 	@NotNull(message="Entering Password is Mandatory")
 	private String password;
 	
@@ -54,6 +54,8 @@ public class Merchant {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "merchant")
 	private List<IPackage> packages=new ArrayList<IPackage>();
 
+	
+	
 	
 	}
 
